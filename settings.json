@@ -1,0 +1,11 @@
+{
+"tnn":{
+  "appID": "watermeter-test01",
+  "accessKey" : "ttn-account-v2.S6_w-wpG19AvLeUNjorYMhx4uctru7dmed_fcTwyvlQ",
+   "tempID" : "pitlab-ds18b20",
+   "tempKey": "ttn-account-v2.D7-uy5QHbEvbjOv65hV_DI4chfWPAC0tWTGNQoiGYno"
+ },
+ "db" :{
+    "adress" : "mongodb+srv://norm_user:normuser@cluster0-8uvit.gcp.mongodb.net/"
+  }
+}
