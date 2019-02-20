@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var data_fetcher=require('./app/data_fetcher');
+var data_fetcher=require('./services/data_fetcher');
 var db=require('./database/db');
 
 db.connectToSrv(function(err){

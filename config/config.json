@@ -6,6 +6,6 @@
    "tempKey": "ttn-account-v2.D7-uy5QHbEvbjOv65hV_DI4chfWPAC0tWTGNQoiGYno"
  },
  "db" :{
-    "adress" : "mongodb+srv://norm_user:normuser@cluster0-8uvit.gcp.mongodb.net/"
+    "adress" : "mongodb+srv://norm_user:normuser@cluster0-8uvit.gcp.mongodb.net/watermeter"
   }
 }
