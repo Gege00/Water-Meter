@@ -17,17 +17,21 @@ module.exports= {
   },
 
   insertDocument: function(query,cb){
+
         db.collection(query.collection).insertOne(query.data,function(err,result){
+
           if(err) return cb(err);
           return cb(result);
         })
 
   },
 
-  readDocument: function(query,cb){
-      db.collection(query.collection).find(query.data).toArray(function(err,docs){
-        return cb(docs);
-      })
+  read: function(q,cb){
+
+      db.collection(q.collection).find(q.query).project(q.projection).toArray(function(err,result){
+        if(err) return cb(err);
+        return cb(result);
+      });
 
   }
 
