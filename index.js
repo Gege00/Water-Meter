@@ -1,3 +1,54 @@
+function detectOutliers(curReadings, oldReadings) {
+  for (let i = 0; i < curReadings.length; i++) {
+    // Get all readings where time of day was similar and the house was the same
+    oldReadings.sort(function (a, b) {
+      return a - b
+    });
+    let median = 0;
+
+    if (oldReadings.length % 2 != 0) {
+      median = oldReadings[Math.ceil(oldReadings.length / 2.0) - 1];
+      oldReadings.splice(Math.ceil(oldReadings.length / 2.0) - 1, 1)
+    } else {
+      median = (oldReadings[oldReadings.length / 2 - 1] + oldReadings[oldReadings.length / 2]) / 2
+    }
+    //console.log("median: " + median);
+    let loweroldReadings = oldReadings.slice(0, oldReadings.length / 2);
+    let higheroldReadings = oldReadings.slice(oldReadings.length / 2, oldReadings.length);
+    //console.log("loweroldReadings: ");
+    //console.log(loweroldReadings);
+    //console.log("higheroldReadings: ");
+    //console.log(higheroldReadings);
+
+
+    let lowerMedian = 0;
+    if (loweroldReadings.length % 2 != 0) {
+      lowerMedian = loweroldReadings[Math.ceil(loweroldReadings.length / 2.0) - 1]
+    } else {
+      lowerMedian = (loweroldReadings[loweroldReadings.length / 2 - 1] + loweroldReadings[loweroldReadings.length / 2]) / 2
+    }
+    //console.log("lowerMedian: " + lowerMedian);
+
+    let higherMedian = 0;
+    if (higheroldReadings.length % 2 != 0) {
+      higherMedian = higheroldReadings[Math.ceil(higheroldReadings.length / 2.0) - 1]
+    } else {
+      higherMedian = (higheroldReadings[higheroldReadings.length / 2 - 1] + higheroldReadings[higheroldReadings.length / 2]) / 2
+    }
+    //console.log("higherMedian: " + higherMedian);
+
+    let iqr = higherMedian - lowerMedian;
+    if (curReadings[i] - median > iqr * 1.5) {
+      // Outlier! Alert house of potential leak
+      console.log("Outlier in house " + i)
+    }
+  }
+}
+
+//var reading = [ 40, 200, 300, 1, 7 ];
+//let dbReadings = [39, 7, 15, 36, 40, 41];
+//detectOutliers(reading, dbReadings);
+
 var ttn = require("ttn");
 var http = require("http");
 var fs = require('fs');
